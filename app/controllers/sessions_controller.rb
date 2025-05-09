@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
       start_new_session_for user
       redirect_to after_authentication_url
     else
-      render json: { error: "Email or password is incorrect." }, status: :unauthorized 
+      render json: { error: "Email or password is incorrect." }, status: :unauthorized
     end
   end
 
   def destroy
     terminate_session
-    render json: { msg: "logged out"}, status: :no_content
+    render json: { msg: "logged out" }, status: :no_content
   end
 end

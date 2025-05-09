@@ -2,8 +2,10 @@
 
 one:
   email_address: one@example.com
+  full_name: One Punch
   password_digest: <%= password_digest %>
 
 two:
   email_address: two@example.com
+  full_name: Two Punch
   password_digest: <%= password_digest %>

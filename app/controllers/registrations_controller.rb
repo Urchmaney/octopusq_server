@@ -8,9 +8,9 @@ class RegistrationsController < ApplicationController
       start_new_session_for(@user)
 
       # send_email_verification
-      
+
       # redirect_to after_authentication_url
-      # 
+      #
       render json: ["registered"], status: :created
       # redirect_to root_path, notice: "Welcome! You have signed up successfully"
     else
@@ -18,12 +18,12 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  private
-    def user_params
-      params.permit(:email_address, :full_name, :password, :password_confirmation)
-    end
+private
+  def user_params
+    params.permit(:email_address, :full_name, :password, :password_confirmation)
+  end
 
-    # def send_email_verification
-    #   UserMailer.with(user: @user).email_verification.deliver_later
-    # end
+  # def send_email_verification
+  #   UserMailer.with(user: @user).email_verification.deliver_later
+  # end
 end

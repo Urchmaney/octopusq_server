@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_04_090829) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_09_082453) do
+  create_table "blocks", force: :cascade do |t|
+    t.string "content"
+    t.integer "wall_id"
+    t.integer "presenting_wall_id"
+    t.integer "cement_id"
+    t.integer "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cement_id"], name: "index_blocks_on_cement_id"
+    t.index ["page_id"], name: "index_blocks_on_page_id"
+    t.index ["presenting_wall_id"], name: "index_blocks_on_presenting_wall_id"
+    t.index ["wall_id"], name: "index_blocks_on_wall_id"
+  end
+
+  create_table "cements", force: :cascade do |t|
+    t.string "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -27,6 +47,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_090829) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
+  create_table "walls", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "sessions", "users"
