@@ -8,7 +8,10 @@ class RegistrationsController < ApplicationController
       start_new_session_for(@user)
 
       # send_email_verification
-      redirect_to after_authentication_url
+      
+      # redirect_to after_authentication_url
+      # 
+      render json: ["registered"], status: :created
       # redirect_to root_path, notice: "Welcome! You have signed up successfully"
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
