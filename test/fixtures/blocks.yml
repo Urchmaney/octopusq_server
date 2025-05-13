@@ -2,7 +2,9 @@ first_wall_present_block:
   content: Presenting first wall
   presenting_wall: first_wall
   cement: first_wall_cement
+  workspace: one
 
 second_wall_page_block:
   content: Second wall page
   page_id: <%= ActiveRecord::FixtureSet.identify(:second_wall) %>
+  workspace: two

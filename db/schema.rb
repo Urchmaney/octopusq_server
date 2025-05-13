@@ -17,18 +17,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_09_082453) do
     t.integer "presenting_wall_id"
     t.integer "cement_id"
     t.integer "page_id"
+    t.integer "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cement_id"], name: "index_blocks_on_cement_id"
     t.index ["page_id"], name: "index_blocks_on_page_id"
     t.index ["presenting_wall_id"], name: "index_blocks_on_presenting_wall_id"
     t.index ["wall_id"], name: "index_blocks_on_wall_id"
+    t.index ["workspace_id"], name: "index_blocks_on_workspace_id"
   end
 
   create_table "cements", force: :cascade do |t|
     t.string "question"
+    t.integer "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["workspace_id"], name: "index_cements_on_workspace_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -50,9 +54,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_09_082453) do
   end
 
   create_table "walls", force: :cascade do |t|
+    t.integer "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["workspace_id"], name: "index_walls_on_workspace_id"
+  end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workspaces_on_user_id"
   end
 
   add_foreign_key "sessions", "users"
+  add_foreign_key "workspaces", "users"
 end

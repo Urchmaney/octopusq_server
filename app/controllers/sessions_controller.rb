@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      redirect_to after_authentication_url
+      render json: "Logged In", status: :ok
     else
       render json: { error: "Email or password is incorrect." }, status: :unauthorized
     end
