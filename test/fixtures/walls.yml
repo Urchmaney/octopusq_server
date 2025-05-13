@@ -1,4 +1,6 @@
-first_wall: {}
+first_wall: 
+  workspace: one
 
 
-second_wall: {}
+second_wall:
+  workspace: two
