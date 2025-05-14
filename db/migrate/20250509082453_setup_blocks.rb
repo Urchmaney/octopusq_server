@@ -29,6 +29,7 @@ class SetupBlocks < ActiveRecord::Migration[8.0]
     create_timestamped_table :cements do |t|
       t.string :question
       t.references :workspace, null: false
+      t.references :root_workspace
     end
   end
 end

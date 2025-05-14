@@ -27,6 +27,16 @@ class WorkspacesControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
+  test "should create workspace and cement" do
+    assert_difference("Workspace.count") do
+      assert_difference("Cement.count") do
+        post workspaces_url, params: { workspace: { name: @workspace.name, question: "What's up?" } }, as: :json
+      end
+    end
+
+    assert_response :created
+  end
+
   test "should show workspace" do
     get workspace_url(@workspace), as: :json
     assert_response :success

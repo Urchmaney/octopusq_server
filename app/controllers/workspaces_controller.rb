@@ -44,6 +44,6 @@ class WorkspacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def workspace_params
-      params.expect(workspace: [ :name ])
+      params.expect(workspace: [ :name, :question ])
     end
 end
