@@ -30,8 +30,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_09_082453) do
   create_table "cements", force: :cascade do |t|
     t.string "question"
     t.integer "workspace_id", null: false
+    t.integer "root_workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["root_workspace_id"], name: "index_cements_on_root_workspace_id"
     t.index ["workspace_id"], name: "index_cements_on_workspace_id"
   end
 

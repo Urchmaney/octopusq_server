@@ -1,3 +1,7 @@
 first_wall_cement:
   question: what is good?
   workspace: one
+  root_workspace_id: <%= ActiveRecord::FixtureSet.identify(:one) %>
+second_wall_cement:
+  question: what is good two?
+  workspace: two
